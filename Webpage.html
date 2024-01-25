@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimpleJSUI</title>
+    <script src="/Users/prakash/Documents/MBO-Jan2024/Javascript/Redis.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #popupConnection {
+            display: none;
+            position: fixed;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        #popupManipulation {
+            display: none;
+            position: fixed;          
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Simple JS App to connect and interact with Redis</h1>
+    
+	<div>
+		<button style="margin:5px;" onclick="showConnectionPopup()">Test Connection</button>
+		<button style="margin:5px" onclick="showManipulationPopup()">Perform Changes</button>
+	</div>
+    
+    <br />
+    <div id="popupConnection">
+        <h2>Redis Credentials:</h2>
+        <label for="dbEndpoint">Endpoint:</label>
+        <input type="text" id="dbEndpoint" placeholder="DB Endpoint">
+
+        <label for="dbPassword">Password:</label>
+        <input type="password" id="dbPassword" placeholder="DB Password">
+
+        <label for="dbPort">Port:</label>
+        <input type="number" id="dbPort" placeholder="DB Port">
+
+        <button onclick="testConnection()">Connect</button>
+
+        <p id="result"></p>
+    </div>
+    <br />
+	
+    <div id="popupManipulation">
+        <h2>Specify the operation:</h2>
+
+          <label>Datatype:
+            <input list="datatype" name="selectedDatatype" /></label>
+            <datalist id="datatype">
+              <option value="String">
+              <option value="Set">
+              <option value="List">
+              <option value="Hash">            
+              </datalist>
+
+              <label>Operation type:
+                <input list="operationtype" name="selectedOperationtype" /></label>
+                <datalist id="operationtype">
+                  <option value="Store">
+                  <option value="Retrieve"> 
+                  </datalist>
+              
+                  <label for="operationKey">Key:</label>
+                  <input type="text" id="operationKey" placeholder="Key">
+          
+                  <label for="operationValue">Value:</label>
+                  <input type="text" id="operationValue" placeholder="Value">   
+
+              <button onclick="testManipulation()">Change</button>
+
+        <p id="result"></p>
+    </div>
+
+</body>
+</html>
